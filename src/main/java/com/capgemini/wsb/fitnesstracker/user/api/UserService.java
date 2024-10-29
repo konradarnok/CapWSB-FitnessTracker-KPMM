@@ -1,11 +1,23 @@
 package com.capgemini.wsb.fitnesstracker.user.api;
 
-/**
- * Interface (API) for modifying operations on {@link User} entities through the API.
- * Implementing classes are responsible for executing changes within a database transaction, whether by continuing an existing transaction or creating a new one if required.
- */
+import java.time.LocalDate;
+import java.util.List;
+
 public interface UserService {
 
     User createUser(User user);
 
+    List<UserDto> getAllUsers();
+
+    List<SimpleUserDto> getAllSimpleUsers(); // Nowa metoda
+
+    UserDto getUserById(Long id);
+
+    List<UserEmailDto> getUsersByEmail(String email); // Zmieniona metoda
+
+    List<UserDto> getUsersOlderThan(LocalDate date);
+
+    User updateUser(Long id, UserDto userDto);
+
+    void deleteUser(Long id);
 }

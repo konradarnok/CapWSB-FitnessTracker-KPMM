@@ -100,8 +100,8 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         User user1 = existingUser(generateUserWithDate(LocalDate.of(2000, 8, 11)));
         User user2 = existingUser(generateUserWithDate(LocalDate.of(2024, 8, 11)));
 
-
-        mockMvc.perform(get("/v1/users/older/{time}", LocalDate.of(2024, 8, 10)).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(
+                get("/v1/users/older/{time}", LocalDate.of(2024, 8, 10)).contentType(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
@@ -116,9 +116,8 @@ class UserApiIntegrationTest extends IntegrationTestBase {
     void shouldRemoveUserFromRepository_whenDeletingClient() throws Exception {
         User user1 = existingUser(generateUser());
 
-
         mockMvc.perform(delete("/v1/users/{userId}", user1.getId())
-                        .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isNoContent());
 
@@ -136,7 +135,7 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         String USER_EMAIL = "mike.scott@domain.com";
 
         String creationRequest = """
-                                                 
+
                 {
                 "firstName": "%s",
                 "lastName": "%s",
@@ -151,8 +150,8 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 USER_EMAIL);
 
         mockMvc.perform(post("/v1/users")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(creationRequest))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(creationRequest))
                 .andDo(log())
                 .andExpect(status().isCreated());
 
@@ -176,7 +175,7 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         String USER_EMAIL = "mike.scott@domain.com";
 
         String updateRequest = """
-                                              
+
                 {
                 "firstName": "%s",
                 "lastName": "%s",
@@ -210,6 +209,5 @@ class UserApiIntegrationTest extends IntegrationTestBase {
     private static User generateUserWithDate(LocalDate date) {
         return new User(randomUUID().toString(), randomUUID().toString(), date, randomUUID().toString());
     }
-
 
 }
