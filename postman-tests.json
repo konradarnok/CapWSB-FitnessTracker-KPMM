@@ -1,0 +1,137 @@
+{
+    "info": {
+      "name": "FitnessTracker API",
+      "_postman_id": "abcd1234-ef56-7890-abcd-1234567890ef",
+      "description": "Kolekcja zapytań do testowania API FitnessTracker",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get All Simple Users",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/v1/users/simple",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users", "simple"]
+          }
+        }
+      },
+      {
+        "name": "Get User By ID",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/v1/users/{{userId}}",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users", "{{userId}}"]
+          }
+        }
+      },
+      {
+        "name": "Get Users By Email",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/v1/users/email?email={{email}}",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users", "email"],
+            "query": [
+              {
+                "key": "email",
+                "value": "{{email}}"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Get Users Older Than",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/v1/users/older/{{date}}",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users", "older", "{{date}}"]
+          }
+        }
+      },
+      {
+        "name": "Create New User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"birthdate\": \"1990-01-01\",\n  \"email\": \"john.doe@example.com\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8080/v1/users",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users"]
+          }
+        }
+      },
+      {
+        "name": "Update User",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Doe\",\n  \"birthdate\": \"1985-05-15\",\n  \"email\": \"jane.doe@example.com\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8080/v1/users/{{userId}}",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users", "{{userId}}"]
+          }
+        }
+      },
+      {
+        "name": "Delete User",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:8080/v1/users/{{userId}}",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["v1", "users", "{{userId}}"]
+          }
+        }
+      }
+    ]
+  }
+  
