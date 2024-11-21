@@ -6,12 +6,15 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
+
 @Entity
 @Table(name = "trainings")
 @Getter
+@Setter // Dodano tę adnotację, aby wygenerować settery
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class Training {
